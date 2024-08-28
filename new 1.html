@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="he">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Athlete Profiles</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="container">
+    <header>
+        <h1>כותרת האירוע</h1>
+        <p>18:00</p>
+    </header>
+    <!-- Athlete 1 -->
+    <div class="athlete" onclick="openModal('modal1')">
+        <img src="http://t0.gstatic.com/licensed-image?q=tbn:ANd9GcSZ0omK0izQV_qNrMpHHGERK7imMv8gc2wAShGffWMDhu5Mlxudl1jV_uQyCxyt5U9OBqhCijv3Vyw7MjiGPEswCIfzVw" alt="S. Kendricks">
+        <h3>S. Kendricks</h3>
+        <span>United States</span>
+    </div>
+    <!-- Modal for Athlete 1 -->
+    <div id="modal1" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('modal1')">&times;</span>
+            <form>
+                <label for="name1">שם:</label>
+                <input type="text" id="name1" name="name"><br>
+                <label for="phone1">נייד:</label>
+                <input type="tel" id="phone1" name="phone"><br>
+                <label for="email1">אימייל:</label>
+                <input type="email" id="email1" name="email"><br>
+                <input type="submit" value="שלח">
+            </form>
+        </div>
+    </div>
+    <!-- Athlete 2 -->
+    <div class="athlete" onclick="openModal('modal2')">
+        <img src="http://t3.gstatic.com/licensed-image?q=tbn:ANd9GcRUnn6XFhN-KTrbiYtnLd87gJiofm8AMsUu7G8AJ5eVg7fK9V9D5vfrC50A6y0Wf5pu0aq-_NDSm3R8gAckwAjCHR-uuQ" alt="A. Duplantis">
+        <h3>A. Duplantis</h3>
+        <span>Sweden</span>
+    </div>
+    <!-- Modal for Athlete 2 -->
+    <div id="modal2" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('modal2')">&times;</span>
+            <form>
+                <label for="name2">שם:</label>
+                <input type="text" id="name2" name="name"><br>
+                <label for="phone2">נייד:</label>
+                <input type="tel" id="phone2" name="phone"><br>
+                <label for="email2">אימייל:</label>
+                <input type="email" id="email2" name="email"><br>
+                <input type="submit" value="שלח">
+            </form>
+        </div>
+    </div>
+</div>
+<script src="scripts.js"></script>
+<script>
+function openModal(modalId) {
+    var modal = document.getElementById(modalId);
+    modal.style.display = 'block';
+}
+
+function closeModal(modalId) {
+    var modal = document.getElementById(modalId);
+    modal.style.display = 'none';
+}
+
+window.onclick = function(event) {
+    var modals = document.getElementsByClassName('modal');
+    for (var i = 0; i < modals.length; i++) {
+        if (event.target == modals[i]) {
+            modals[i].style.display = "none";
+        }
+    }
+}
+</script>
+</body>
+</html>
