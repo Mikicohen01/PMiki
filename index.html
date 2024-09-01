@@ -1,80 +1,83 @@
 <!DOCTYPE html>
 <html lang="he">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Athlete Profiles</title>
-<link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>אתר הימורי ספורט חינם</title>
+    <!-- קישור לקובץ ה-CSS -->
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-<div class="container">
-    <header>
-        <h1>כותרת האירוע</h1>
-        <p>18:00</p>
-    </header>
-    <!-- Athlete 1 -->
-    <div class="athlete" onclick="openModal('modal1')">
-        <img src="http://t0.gstatic.com/licensed-image?q=tbn:ANd9GcSZ0omK0izQV_qNrMpHHGERK7imMv8gc2wAShGffWMDhu5Mlxudl1jV_uQyCxyt5U9OBqhCijv3Vyw7MjiGPEswCIfzVw" alt="S. Kendricks">
-        <h3>S. Kendricks</h3>
-        <span>United States</span>
+    <!-- לוגו ושם האתר -->
+    <div class="header">
+        <img src="MySportwinner.jpg" alt="לוגו האתר">
+        <h1>MySportWimmer</h1>
     </div>
-    <!-- Modal for Athlete 1 -->
-    <div id="modal1" class="modal">
-        <div class="modal-content">
-            <span class="close" onclick="closeModal('modal1')">&times;</span>
-            <form>
-                <label for="name1">שם:</label>
-                <input type="text" id="name1" name="name"><br>
-                <label for="phone1">נייד:</label>
-                <input type="tel" id="phone1" name="phone"><br>
-                <label for="email1">אימייל:</label>
-                <input type="email" id="email1" name="email"><br>
-                <input type="submit" value="שלח">
-            </form>
-        </div>
-    </div>
-    <!-- Athlete 2 -->
-    <div class="athlete" onclick="openModal('modal2')">
-        <img src="http://t3.gstatic.com/licensed-image?q=tbn:ANd9GcRUnn6XFhN-KTrbiYtnLd87gJiofm8AMsUu7G8AJ5eVg7fK9V9D5vfrC50A6y0Wf5pu0aq-_NDSm3R8gAckwAjCHR-uuQ" alt="A. Duplantis">
-        <h3>A. Duplantis</h3>
-        <span>Sweden</span>
-    </div>
-    <!-- Modal for Athlete 2 -->
-    <div id="modal2" class="modal">
-        <div class="modal-content">
-            <span class="close" onclick="closeModal('modal2')">&times;</span>
-            <form>
-                <label for="name2">שם:</label>
-                <input type="text" id="name2" name="name"><br>
-                <label for="phone2">נייד:</label>
-                <input type="tel" id="phone2" name="phone"><br>
-                <label for="email2">אימייל:</label>
-                <input type="email" id="email2" name="email"><br>
-                <input type="submit" value="שלח">
-            </form>
-        </div>
-    </div>
-</div>
-<script src="scripts.js"></script>
-<script>
-function openModal(modalId) {
-    var modal = document.getElementById(modalId);
-    modal.style.display = 'block';
-}
 
-function closeModal(modalId) {
-    var modal = document.getElementById(modalId);
-    modal.style.display = 'none';
-}
+    <!-- דף הבית -->
+    <div id="sport-page" class="page">
+        <h1>ספורט</h1>
+        <div class="category" onclick="showPage('schedule-page')">
+            <img src="athletics competition.jpg" alt="אתלטיקה" style="width: 100%; border-radius: 5px;">
+            <p>אתלטיקה</p>
+        </div>
+        <div class="category" onclick="showPage('schedule-page')">
+            <img src="tennis match.jpg" alt="טניס" style="width: 100%; border-radius: 5px;">
+            <p>טניס</p>
+        </div>
+        <!-- הוסף קטגוריות נוספות כאן -->
+        <button onclick="showTermsPopup()">תקנון ותנאי שימוש</button>
+    </div>
 
-window.onclick = function(event) {
-    var modals = document.getElementsByClassName('modal');
-    for (var i = 0; i < modals.length; i++) {
-        if (event.target == modals[i]) {
-            modals[i].style.display = "none";
-        }
-    }
-}
-</script>
+    <!-- דף לוח הזמנים -->
+    <div id="schedule-page" class="page" style="display:none;">
+        <button onclick="showPage('sport-page')">חזרה לדף הבית</button>
+        <h2>יום ראשון - לוח זמנים</h2>
+        <div class="event" onclick="showPage('participants-page')">
+            <p>ריצת 400 מטר - 18:05</p>
+        </div>
+        <div class="event" onclick="showPage('participants-page')">
+            <p>גמר קפיצה לגובה - 18:55</p>
+        </div>
+        <!-- הוסף אירועים נוספים כאן -->
+    </div>
+
+    <!-- דף המשתתפים -->
+    <div id="participants-page" class="page" style="display:none;">
+        <button onclick="showPage('sport-page')">חזרה לדף הבית</button>
+        <button onclick="showPage('schedule-page')">חזרה ללוח זמנים</button>
+        <h3>חצי גמר 800 מטר - נשים</h3>
+        <div class="participant" onclick="showForm('מ. וורקש')">מ. וורקש - אתיופיה</div>
+        <div class="participant" onclick="showForm('מ. מארי')">מ. מארי - קניה</div>
+        <!-- הוסף משתתפים נוספים כאן -->
+    </div>
+
+    <!-- טופס פרטים אישיים בחלון פופ-אפ -->
+    <div id="overlay" onclick="hideForm()"></div>
+    <div id="form-popup">
+        <button onclick="hideForm()">סגירה</button>
+        <form id="bet-form">
+            <label for="firstName">שם פרטי:</label>
+            <input type="text" id="firstName" name="firstName" required>
+            <label for="lastName">שם משפחה:</label>
+            <input type="text" id="lastName" name="lastName" required>
+            <label for="email">אימייל:</label>
+            <input type="email" id="email" name="email" required>
+            <label for="phone">מספר טלפון:</label>
+            <input type="text" id="phone" name="phone" required>
+            <input type="checkbox" id="terms" name="terms" required> אני מסכים/ה ל
+            <a href="#" onclick="showTermsPopup()">תקנון ותנאי שימוש</a>.
+            <button type="submit" onclick="submitForm()">שליחה</button>
+        </form>
+    </div>
+
+    <!-- חלון פופ-אפ של התקנון -->
+    <div id="terms-popup">
+        <button onclick="hideTermsPopup()">סגירה</button>
+        <div id="terms-content" class="terms-content"></div> <!-- אזור תוכן התקנון -->
+    </div>
+
+    <!-- קישור לקובץ ה-JavaScript -->
+    <script src="script.js"></script>
 </body>
 </html>
